@@ -58,6 +58,7 @@ public class Library {
                     EnglishFiction englishFiction = (EnglishFiction) fictionFactory.createEnglish();
                     library.add(englishFiction);
                     break;
+
                 case "Russian":
                     RussianFiction russianFiction = (RussianFiction) fictionFactory.createRussian();
                     library.add(russianFiction);
