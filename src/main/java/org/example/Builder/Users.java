@@ -1,19 +1,19 @@
 package org.example.Builder;
 
 import java.util.ArrayList;
-import org.example.AbstractFabric.Book;
-import java.util.HashSet;
 import java.util.Random;
-import java.util.Set;
+import org.example.AbstractFabric.Book;
 import org.example.Library;
 
 public class Users {
     static ArrayList<Person> libraryUsers = new ArrayList<>();
     public Director dir;
-    public static ArrayList getlibraryUsers() {
+
+    public static ArrayList<Person> getlibraryUsers() {
         return libraryUsers;
     }
-    public Users(){
+
+    public Users() {
         this.dir = new Director();
 
         createPersons(new StudentBuilder(), 3);
@@ -27,19 +27,17 @@ public class Users {
         }
     }
 
-    public Set<Book> distributeUserBooks(Person user) {
-        ArrayList<Book> libraryBooks = Library.getLibrary();
+    public void distributeUserBooks(Person user, Library library) {
         // Генерация случайного числа книг от 3 до 10
         int numBooks = new Random().nextInt(8) + 3;
-        Set<Book> userBooks = new HashSet<>();
 
         // Добавление уникальных книг пользователю
-        while (userBooks.size() < numBooks) {
-            int index = new Random().nextInt(libraryBooks.size());
-            userBooks.add(libraryBooks.get(index));
+        while (user.getUserListBook().size() < numBooks) {
+            int index = new Random().nextInt(library.getLibrary().size());
+            Book book = library.getLibrary().get(index);
+            if (!user.getUserListBook().contains(book)) {
+                user.getUserListBook().add(book);
+            }
         }
-        return userBooks;
     }
-
-
 }

@@ -1,10 +1,18 @@
 package org.example.Builder;
 
+import java.util.ArrayList;
+import org.example.AbstractFabric.Book;
+
 public class Person {
     String fullname;
     int deparment;
     int group;
     String status;
+    ArrayList userListBook;
+
+    public Person(){
+        userListBook = new ArrayList<>();
+    }
     public void setDeparment(int deparment){
         this.deparment = deparment;
     }
@@ -22,6 +30,14 @@ public class Person {
     public String getFullDiscription() {
         String fulldidcription = fullname + " " + this.group + " " + this.deparment;
         return fulldidcription;
+    }
+
+    public ArrayList<Book> getUserListBook() {
+        return userListBook;
+    }
+
+    public void addBook(Book book){
+        userListBook.add(book);
     }
 
     public String getFullname() {

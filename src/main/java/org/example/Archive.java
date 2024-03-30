@@ -23,8 +23,11 @@ public class Archive extends JFrame {
         // Получение списка пользователей и списка книг
         ArrayList<Person> libraryUsers = users.getlibraryUsers();
         System.out.println(libraryUsers);
-        ArrayList<Book> libraryBooks = library.getLibrary();
-        System.out.println(libraryBooks);
+
+        // Распределение книг для каждого пользователя
+        for (Person user : libraryUsers) {
+            users.distributeUserBooks(user, library);
+        }
 
         // Создание дерева книг
         DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode("Университет");
@@ -54,8 +57,8 @@ public class Archive extends JFrame {
                 professorsNode.add(userNode);
             }
 
-            // Получаем книги для каждого пользователя и добавляем их в узел пользователя
-            Set<Book> userBooks = users.distributeUserBooks(user);
+            // Добавляем книги для каждого пользователя в узел пользователя
+            ArrayList<Book> userBooks = user.getUserListBook();
             for (Book book : userBooks) {
                 DefaultMutableTreeNode bookNode = new DefaultMutableTreeNode(book.GetFullDiscription());
                 userNode.add(bookNode);

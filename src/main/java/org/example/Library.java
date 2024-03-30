@@ -1,4 +1,5 @@
 package org.example;
+
 import org.example.AbstractFabric.*;
 
 import java.util.ArrayList;
@@ -12,11 +13,11 @@ import org.example.AbstractFabric.Fiction.RussianFiction;
 
 
 public class Library {
-    static ArrayList<Book> library = new ArrayList<>();
-    public static ArrayList getLibrary() {
+    private ArrayList<Book> library = new ArrayList<>();
+
+    public ArrayList<Book> getLibrary() {
         return library;
     }
-
 
     public Library() {
         createEducationalBooks(15, "English");
@@ -66,7 +67,4 @@ public class Library {
             }
         }
     }
-
 }
-
-
