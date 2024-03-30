@@ -10,6 +10,7 @@ import org.example.AbstractFabric.Book;
 
 public class Archive extends JFrame {
     private final Users users;
+
     private final Library library;
 
     public Archive() {
@@ -25,8 +26,8 @@ public class Archive extends JFrame {
         System.out.println(libraryUsers);
 
         // Распределение книг для каждого пользователя
-        for (Person user : libraryUsers) {
-            users.distributeUserBooks(user, library);
+        for (Person userr : libraryUsers) {
+            users.distributeUserBooks(userr, library);
         }
 
         // Создание дерева книг
@@ -48,17 +49,17 @@ public class Archive extends JFrame {
         parent.add(studentsNode);
 
         // Добавляем преподавателей и студентов в соответствующие категории
-        for (Person user : libraryUsers) {
-            System.out.println(user.getStatus());
-            DefaultMutableTreeNode userNode = new DefaultMutableTreeNode(user.getFullname());
-            if (user.getStatus().equals("Студент")){
+        for (Person userr : libraryUsers) {
+            System.out.println(userr.getStatus());
+            DefaultMutableTreeNode userNode = new DefaultMutableTreeNode(userr.getFullname());
+            if (userr.getStatus().equals("Студент")){
                 studentsNode.add(userNode);
-            } else if (user.getStatus().equals("Преподаватель")){
+            } else if (userr.getStatus().equals("Преподаватель")){
                 professorsNode.add(userNode);
             }
 
             // Добавляем книги для каждого пользователя в узел пользователя
-            ArrayList<Book> userBooks = user.getUserListBook();
+            ArrayList<Book> userBooks = userr.getUserListBook();
             for (Book book : userBooks) {
                 DefaultMutableTreeNode bookNode = new DefaultMutableTreeNode(book.GetFullDiscription());
                 userNode.add(bookNode);
