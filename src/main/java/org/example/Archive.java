@@ -28,7 +28,7 @@ public class Archive extends JFrame {
 
         // Создание дерева книг
         DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode("Университет");
-        addCategories(rootNode, libraryUsers, libraryBooks);
+        addCategories(rootNode, libraryUsers);
         JTree tree = new JTree(rootNode);
         JScrollPane scrollPane = new JScrollPane(tree);
         add(scrollPane);
@@ -37,7 +37,7 @@ public class Archive extends JFrame {
         setLocationRelativeTo(null);
     }
 
-    private void addCategories(DefaultMutableTreeNode parent, ArrayList<Person> libraryUsers, ArrayList<Book> libraryBooks) {
+    private void addCategories(DefaultMutableTreeNode parent, ArrayList<Person> libraryUsers) {
         // Добавляем категории "Преподаватели" и "Студенты"
         DefaultMutableTreeNode professorsNode = new DefaultMutableTreeNode("Преподаватели");
         DefaultMutableTreeNode studentsNode = new DefaultMutableTreeNode("Студенты");
@@ -54,26 +54,12 @@ public class Archive extends JFrame {
                 professorsNode.add(userNode);
             }
 
-            // Добавляем книги для каждого пользователя
-            Set<Book> userBooks = generateUserBooks(libraryBooks);
+            // Получаем книги для каждого пользователя и добавляем их в узел пользователя
+            Set<Book> userBooks = users.distributeUserBooks(user);
             for (Book book : userBooks) {
                 DefaultMutableTreeNode bookNode = new DefaultMutableTreeNode(book.GetFullDiscription());
                 userNode.add(bookNode);
             }
         }
     }
-
-    private Set<Book> generateUserBooks(ArrayList<Book> libraryBooks) {
-        // Генерация случайного числа книг от 3 до 10
-        int numBooks = new Random().nextInt(8) + 3;
-        Set<Book> userBooks = new HashSet<>();
-
-        // Добавление уникальных книг пользователю
-        while (userBooks.size() < numBooks) {
-            int index = new Random().nextInt(libraryBooks.size());
-            userBooks.add(libraryBooks.get(index));
-        }
-        return userBooks;
-    }
-
 }
