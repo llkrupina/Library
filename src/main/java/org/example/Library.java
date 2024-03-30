@@ -31,6 +31,7 @@ public class Library {
         educatedFactory = new EducationalFactory();
 
         for (int i = 0; i < numberOfBooks; i++) {
+
             switch (bookType) {
                 case "English":
                     EnglishEducational englishEducational = (EnglishEducational) educatedFactory.createEnglish();
