@@ -2,7 +2,7 @@ package org.example;
 
 public class Main {
     public static void main(String[] args) {
-        Archive app = new Archive();
+        ArchiveGUI app = new ArchiveGUI();
         app.setVisible(true);
     }
 }

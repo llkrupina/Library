@@ -9,7 +9,6 @@ import java.util.Random;
 public class EnglishFiction extends Book implements English {
     String title;
     public  EnglishFiction() {
-
         ArrayList<String> englishfiction = new ArrayList<>();
         englishfiction.add("To Kill a Mockingbird by Harper Lee");
         englishfiction.add("1984 by George Orwell");
